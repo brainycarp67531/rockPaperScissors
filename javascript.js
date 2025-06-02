@@ -1,4 +1,4 @@
-console.log("Page loaded!");
+console.log("Rock paper scissors");
 
 // write a function with the name getComputerChoice. 
 function getComputerChoice() {
@@ -39,11 +39,19 @@ function getComputerChoice() {
 
 
 // Write a function named getHumanChoice that will asked for input rock paper or scissors. 
+function getHumanChoice() {
 
-// Create a variable named humanChoice that will store the humans input.
+    // Create a variable named humanChoice that will store the humans input.
+    let humanChoice = "";
 
-// Asked the human for input. 
+    // Asked the human for input, and store it in the variable created. 
+    humanChoice = prompt("Rock, paper or scissors, choose wisely. ");
 
-// Store the input in the variable
+    // return the variable. 
+    return humanChoice;
 
-// return the variable. 
+}
+
+// test the function getHumanChoice
+// let humanTest = getHumanChoice();
+// console.log(humanTest);

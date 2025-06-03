@@ -1,5 +1,13 @@
 console.log("Rock paper scissors");
 
+
+// Create a variable named humanScore to keep track of the humans score which will have a initial value of 0.
+let humanScore = 0; 
+
+// Create a variable named computerScore to keep track of the computers score which will have a initial value of 0.
+let computerScore = 0;
+
+
 // write a function with the name getComputerChoice. 
 function getComputerChoice() {
 
@@ -55,3 +63,8 @@ function getHumanChoice() {
 // test the function getHumanChoice
 // let humanTest = getHumanChoice();
 // console.log(humanTest);
+
+
+// test the score variables.
+// console.log(humanScore);
+// console.log(computerScore);

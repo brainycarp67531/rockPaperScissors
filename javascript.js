@@ -77,25 +77,73 @@ function playRound(humanSelection, computerSelection) {
     humanSelection = humanSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
 
-    // Compare the two chocies. 
-    
-        // if human has rock and computer have scissors 
+    // print human and computer selection for debugging
+    console.log(humanSelection);
+    console.log(computerSelection);
 
+    // Compare the human selection to computer selection. 
+
+     // when we have the same it will be a draw
+    if (humanSelection === computerSelection) {
+        // no points to anyone, print to the console that it is a draw. 
+        console.log("It is a draw!");
+
+    // if human has rock and computer have scissors 
+    } else if (humanSelection === "rock") {
+        if (computerSelection === "scissors") {
             // human vins and gets one point
+            humanScore += 1;
 
-        // else computer wins and gets a point.
+            // write to the console that the human won this round. 
+            console.log("You won! Rock beats scissors.");
         
-        // if human has paper and computer has rock
+        // computer wins and gets a point. 
+        } else {
+            // give the computer a point. 
+            computerScore += 1;
 
+            // print to the console that the human lost. 
+            console.log("You lose! " + computerSelection + " beats " + humanSelection);
+
+        }
+
+    // else if human has paper and computer has rock
+    } else if (humanSelection === "paper") {
+        if (computerSelection === "rock") {
             // human wins and gets one point. 
+            humanScore += 1;
 
-        // else computer wins and gets a point
+            // write to the console that the human won this round. 
+            console.log("You won! Paper beats rock.");
+        } else {
+            // give the computer a point
+            computerScore += 1;
 
-        // if human has scissors and computer has paper 
+            // print to the console that the human lost. 
+            console.log("You lose! " + computerSelection + " beats " + humanSelection);
+        }
+    
+    // if human has scissors and computer has paper 
+    } else if (humanSelection === "scissors") {
+        if (computerSelection === "paper") {
+            // human wins and gets one point. 
+            humanScore += 1;
 
-            // human wins and gets a point. 
+            // write to the console that the human won this round. 
+            console.log("You won! Scissors beats paper.");
+        } else {
+            // give the computer a point
+            computerScore += 1;
 
-        // else computer wins and gets a point. 
+            // print to the console that the human lost. 
+            console.log("You lose! " + computerSelection + " beats " + humanSelection);
+        }
+
+    // Will cache invalid choices.  
+    } else {
+        console.log("Not valid");
+    }
+             
 
 }
 

@@ -68,3 +68,38 @@ function getHumanChoice() {
 // test the score variables.
 // console.log(humanScore);
 // console.log(computerScore);
+
+
+// Write a function named playRound that will take two parameters (humanSelection and computerSelection)
+function playRound(humanSelection, computerSelection) {
+
+    // Make sure that both the humanSelection and computerSelection has only lower case letters. 
+    humanSelection = humanSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+
+    // Compare the two chocies. 
+    
+        // if human has rock and computer have scissors 
+
+            // human vins and gets one point
+
+        // else computer wins and gets a point.
+        
+        // if human has paper and computer has rock
+
+            // human wins and gets one point. 
+
+        // else computer wins and gets a point
+
+        // if human has scissors and computer has paper 
+
+            // human wins and gets a point. 
+
+        // else computer wins and gets a point. 
+
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);

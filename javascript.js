@@ -1,13 +1,6 @@
 console.log("Rock paper scissors");
 
 
-// Create a variable named humanScore to keep track of the humans score which will have a initial value of 0.
-let humanScore = 0; 
-
-// Create a variable named computerScore to keep track of the computers score which will have a initial value of 0.
-let computerScore = 0;
-
-
 // write a function with the name getComputerChoice. 
 function getComputerChoice() {
 
@@ -70,84 +63,131 @@ function getHumanChoice() {
 // console.log(computerScore);
 
 
-// Write a function named playRound that will take two parameters (humanSelection and computerSelection)
-function playRound(humanSelection, computerSelection) {
+// Create a new function called playGame, that will simulate 5 games. 
+function playGame() {
 
-    // Make sure that both the humanSelection and computerSelection has only lower case letters. 
-    humanSelection = humanSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
+    // Move the score variable here. 
+    // Create a variable named humanScore to keep track of the humans score which will have a initial value of 0.
+    let humanScore = 0; 
 
-    // print human and computer selection for debugging
-    console.log(humanSelection);
-    console.log(computerSelection);
+    // Create a variable named computerScore to keep track of the computers score which will have a initial value of 0.
+    let computerScore = 0;
 
-    // Compare the human selection to computer selection. 
+    // Move the playRound function here 
+    // Write a function named playRound that will take two parameters (humanSelection and computerSelection)
+    function playRound(humanSelection, computerSelection) {
 
-     // when we have the same it will be a draw
-    if (humanSelection === computerSelection) {
-        // no points to anyone, print to the console that it is a draw. 
-        console.log("It is a draw!");
+        // Make sure that both the humanSelection and computerSelection has only lower case letters. 
+        humanSelection = humanSelection.toLowerCase();
+        computerSelection = computerSelection.toLowerCase();
 
-    // if human has rock and computer have scissors 
-    } else if (humanSelection === "rock") {
-        if (computerSelection === "scissors") {
-            // human vins and gets one point
-            humanScore += 1;
+        // print human and computer selection for debugging
+        console.log(humanSelection);
+        console.log(computerSelection);
 
-            // write to the console that the human won this round. 
-            console.log("You won! Rock beats scissors.");
+        // Compare the human selection to computer selection. 
+
+        // when we have the same it will be a draw
+        if (humanSelection === computerSelection) {
+            // no points to anyone, print to the console that it is a draw. 
+            console.log("It is a draw!");
+
+        // if human has rock and computer have scissors 
+        } else if (humanSelection === "rock") {
+            if (computerSelection === "scissors") {
+                // human vins and gets one point
+                humanScore += 1;
+
+                // write to the console that the human won this round. 
+                console.log("You won! Rock beats scissors.");
+            
+            // computer wins and gets a point. 
+            } else {
+                // give the computer a point. 
+                computerScore += 1;
+
+                // print to the console that the human lost. 
+                console.log("You lose! " + computerSelection + " beats " + humanSelection);
+
+            }
+
+        // else if human has paper and computer has rock
+        } else if (humanSelection === "paper") {
+            if (computerSelection === "rock") {
+                // human wins and gets one point. 
+                humanScore += 1;
+
+                // write to the console that the human won this round. 
+                console.log("You won! Paper beats rock.");
+            } else {
+                // give the computer a point
+                computerScore += 1;
+
+                // print to the console that the human lost. 
+                console.log("You lose! " + computerSelection + " beats " + humanSelection);
+            }
         
-        // computer wins and gets a point. 
+        // if human has scissors and computer has paper 
+        } else if (humanSelection === "scissors") {
+            if (computerSelection === "paper") {
+                // human wins and gets one point. 
+                humanScore += 1;
+
+                // write to the console that the human won this round. 
+                console.log("You won! Scissors beats paper.");
+            } else {
+                // give the computer a point
+                computerScore += 1;
+
+                // print to the console that the human lost. 
+                console.log("You lose! " + computerSelection + " beats " + humanSelection);
+            }
+
+        // Will cache invalid choices.  
         } else {
-            // give the computer a point. 
-            computerScore += 1;
-
-            // print to the console that the human lost. 
-            console.log("You lose! " + computerSelection + " beats " + humanSelection);
-
+            console.log("Not valid");
         }
-
-    // else if human has paper and computer has rock
-    } else if (humanSelection === "paper") {
-        if (computerSelection === "rock") {
-            // human wins and gets one point. 
-            humanScore += 1;
-
-            // write to the console that the human won this round. 
-            console.log("You won! Paper beats rock.");
-        } else {
-            // give the computer a point
-            computerScore += 1;
-
-            // print to the console that the human lost. 
-            console.log("You lose! " + computerSelection + " beats " + humanSelection);
-        }
-    
-    // if human has scissors and computer has paper 
-    } else if (humanSelection === "scissors") {
-        if (computerSelection === "paper") {
-            // human wins and gets one point. 
-            humanScore += 1;
-
-            // write to the console that the human won this round. 
-            console.log("You won! Scissors beats paper.");
-        } else {
-            // give the computer a point
-            computerScore += 1;
-
-            // print to the console that the human lost. 
-            console.log("You lose! " + computerSelection + " beats " + humanSelection);
-        }
-
-    // Will cache invalid choices.  
-    } else {
-        console.log("Not valid");
     }
-             
 
+    // create a loop that will play the game five rounds and keep track of the score. 
+    for (let i = 0; i < 5; i++) {
+
+        // get the human selection.
+        const humanSelection = getHumanChoice();
+
+        // get the computer selection.
+        const computerSelection = getComputerChoice();
+
+        // play a round and give a point to the winner. 
+        playRound(humanSelection, computerSelection);
+
+        // print the current score to the console. 
+        console.log("Human score: " + humanScore);
+        console.log("Computer score: " + computerScore);
+
+    }
+
+    // Check the score and declare a winner. 
+    // check if the human and the computer have the same score
+    if (humanScore === computerScore) {
+        // it is a draw
+        console.log("It is a draw, maybe a new round?");
+
+    // check if human score if larger then computer
+    } else if (humanScore > computerScore) {
+        // write to the console that the human is the winner
+        console.log("The human is the winner, congratulations!!!");
+
+    // check if the computer score if bigger then the human. 
+    } else if (computerScore > humanScore) {
+        // write to console that the computer is the winner. 
+        console.log("The computer is the winner.");
+
+    // else write to console that we have an error.
+    } else {
+        console.log("Something is wrong...");
+    } 
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+playGame();

@@ -150,7 +150,7 @@ function playGame() {
     }
 
     // create a loop that will play the game five rounds and keep track of the score. 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
 
         // get the human selection.
         const humanSelection = getHumanChoice();

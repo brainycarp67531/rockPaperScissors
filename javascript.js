@@ -1,6 +1,15 @@
 console.log("Rock paper scissors");
 
 
+    // select the button with the id playerSelection
+    let playerSelection = document.querySelector('#playerSelection');
+
+    // listen for the event, when a button is clicked. 
+    playerSelection.addEventListener('click', playRound(playerSelection, computerSelection));   
+
+
+
+
 // write a function with the name getComputerChoice. 
 function getComputerChoice() {
 
@@ -149,23 +158,6 @@ function playGame() {
         }
     }
 
-    // create a loop that will play the game five rounds and keep track of the score. 
-    for (let i = 0; i < 3; i++) {
-
-        // get the human selection.
-        const humanSelection = getHumanChoice();
-
-        // get the computer selection.
-        const computerSelection = getComputerChoice();
-
-        // play a round and give a point to the winner. 
-        playRound(humanSelection, computerSelection);
-
-        // print the current score to the console. 
-        console.log("Human score: " + humanScore);
-        console.log("Computer score: " + computerScore);
-
-    }
 
     // Check the score and declare a winner. 
     // check if the human and the computer have the same score

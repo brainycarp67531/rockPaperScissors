@@ -71,8 +71,19 @@ function playRound(humanSelection, computerSelection) {
     computerSelection = computerSelection.toLowerCase();
 
     // print human and computer selection for debugging
-    console.log(humanSelection);
-    console.log(computerSelection);
+    // console.log(humanSelection);
+    // console.log(computerSelection);
+
+    // display the player choice on the page
+    let playerDiv = document.querySelector("#player");
+    playerDiv.textContent = "Player: " + humanSelection;
+
+    // Display the computer choice on the page
+    let computerDiv = document.querySelector("#computer");
+    computerDiv.textContent = "Computer: " + computerSelection;
+
+    // create parameter to be able to update the result on the page.
+    let resultDiv = document.querySelector("#result");
 
     // Compare the human selection to computer selection. 
 
@@ -80,6 +91,9 @@ function playRound(humanSelection, computerSelection) {
     if (humanSelection === computerSelection) {
         // no points to anyone, print to the console that it is a draw. 
         console.log("It is a draw!");
+
+        // display the result to the page
+        resultDiv.textContent = "Result: It is a draw!";
 
     // if human has rock and computer have scissors 
     } else if (humanSelection === "rock") {
@@ -89,6 +103,10 @@ function playRound(humanSelection, computerSelection) {
 
             // write to the console that the human won this round. 
             console.log("You won! Rock beats scissors.");
+
+            // Display the result on the page
+            resultDiv.textContent = "Result: You won! " + humanSelection + " beats " + computerSelection + ".";
+
         
         // computer wins and gets a point. 
         } else {
@@ -98,6 +116,9 @@ function playRound(humanSelection, computerSelection) {
             // print to the console that the human lost. 
             console.log("You lose! " + computerSelection + " beats " + humanSelection);
 
+            // Display the result on the page
+            resultDiv.textContent = "Result: You lose! " + computerSelection + " beats " + humanSelection + ".";
+ 
         }
 
     // else if human has paper and computer has rock
@@ -108,12 +129,19 @@ function playRound(humanSelection, computerSelection) {
 
             // write to the console that the human won this round. 
             console.log("You won! Paper beats rock.");
+
+            // display the result on the page
+            resultDiv.textContent = "Result: You won! " + humanSelection + " beats " + computerSelection + ".";
+
         } else {
             // give the computer a point
             computerScore += 1;
 
             // print to the console that the human lost. 
             console.log("You lose! " + computerSelection + " beats " + humanSelection);
+
+            // Display the result to the page
+            resultDiv.textContent = "Result: You lose! " + computerSelection + " beats " + humanSelection + ".";
         }
     
     // if human has scissors and computer has paper 
@@ -124,12 +152,19 @@ function playRound(humanSelection, computerSelection) {
 
             // write to the console that the human won this round. 
             console.log("You won! Scissors beats paper.");
+
+            // display the result to the page
+            resultDiv.textContent = "Result: You won! " + humanSelection + " beats " + computerSelection + ".";
+
         } else {
             // give the computer a point
             computerScore += 1;
 
             // print to the console that the human lost. 
             console.log("You lose! " + computerSelection + " beats " + humanSelection);
+
+            //display the result to the page
+            resultDiv.textContent = "Result: You lose! " + computerSelection + " beats " + humanSelection + ".";
         }
 
     // Will cache invalid choices.  

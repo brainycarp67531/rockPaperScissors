@@ -40,27 +40,21 @@ function getComputerChoice() {
     return result;
 }
 
-// test the function getComputerChoice. 
-// let test = getComputerChoice();
-// console.log(test);
 
-
+// NOT IN USE. 
 // Write a function named getHumanChoice that will asked for input rock paper or scissors. 
-function getHumanChoice() {
+// function getHumanChoice() {
 
-    // Create a variable named humanChoice that will store the humans input.
-    let humanChoice = "";
+//     // Create a variable named humanChoice that will store the humans input.
+//     let humanChoice = "";
 
-    // Asked the human for input, and store it in the variable created. 
-    humanChoice = prompt("Rock, paper or scissors, choose wisely. ");
+//     // Asked the human for input, and store it in the variable created. 
+//     humanChoice = prompt("Rock, paper or scissors, choose wisely. ");
 
-    // return the variable. 
-    return humanChoice;
+//     // return the variable. 
+//     return humanChoice;
 
-}
-
-
-
+// }
 
 
 // Write a function named playRound that will take two parameters (humanSelection and computerSelection)
@@ -90,7 +84,7 @@ function playRound(humanSelection, computerSelection) {
     // when we have the same it will be a draw
     if (humanSelection === computerSelection) {
         // no points to anyone, print to the console that it is a draw. 
-        console.log("It is a draw!");
+        // console.log("It is a draw!");
 
         // display the result to the page
         resultDiv.textContent = "Result: It is a draw!";
@@ -102,7 +96,7 @@ function playRound(humanSelection, computerSelection) {
             humanScore += 1;
 
             // write to the console that the human won this round. 
-            console.log("You won! Rock beats scissors.");
+            // console.log("You won! Rock beats scissors.");
 
             // Display the result on the page
             resultDiv.textContent = "Result: You won! " + humanSelection + " beats " + computerSelection + ".";
@@ -114,7 +108,7 @@ function playRound(humanSelection, computerSelection) {
             computerScore += 1;
 
             // print to the console that the human lost. 
-            console.log("You lose! " + computerSelection + " beats " + humanSelection);
+            // console.log("You lose! " + computerSelection + " beats " + humanSelection);
 
             // Display the result on the page
             resultDiv.textContent = "Result: You lose! " + computerSelection + " beats " + humanSelection + ".";
@@ -128,7 +122,7 @@ function playRound(humanSelection, computerSelection) {
             humanScore += 1;
 
             // write to the console that the human won this round. 
-            console.log("You won! Paper beats rock.");
+            // console.log("You won! Paper beats rock.");
 
             // display the result on the page
             resultDiv.textContent = "Result: You won! " + humanSelection + " beats " + computerSelection + ".";
@@ -138,7 +132,7 @@ function playRound(humanSelection, computerSelection) {
             computerScore += 1;
 
             // print to the console that the human lost. 
-            console.log("You lose! " + computerSelection + " beats " + humanSelection);
+            // console.log("You lose! " + computerSelection + " beats " + humanSelection);
 
             // Display the result to the page
             resultDiv.textContent = "Result: You lose! " + computerSelection + " beats " + humanSelection + ".";
@@ -151,7 +145,7 @@ function playRound(humanSelection, computerSelection) {
             humanScore += 1;
 
             // write to the console that the human won this round. 
-            console.log("You won! Scissors beats paper.");
+            // console.log("You won! Scissors beats paper.");
 
             // display the result to the page
             resultDiv.textContent = "Result: You won! " + humanSelection + " beats " + computerSelection + ".";
@@ -161,7 +155,7 @@ function playRound(humanSelection, computerSelection) {
             computerScore += 1;
 
             // print to the console that the human lost. 
-            console.log("You lose! " + computerSelection + " beats " + humanSelection);
+            // console.log("You lose! " + computerSelection + " beats " + humanSelection);
 
             //display the result to the page
             resultDiv.textContent = "Result: You lose! " + computerSelection + " beats " + humanSelection + ".";
@@ -173,7 +167,19 @@ function playRound(humanSelection, computerSelection) {
     }
 }
 
+
+function resetScore() {
+    humanScore = 0;
+    computerScore = 0;
+}
+
+
 // Make this into a function. 
+function checkScore() {
+
+    // select the element to be updated when we have a winner. 
+    let winner = document.querySelector("#winner");
+
     // Check the score and declare a winner. 
     // check if the human and the computer have the same score
     if (humanScore === computerScore) {
@@ -182,30 +188,79 @@ function playRound(humanSelection, computerSelection) {
 
     // check if human score if larger then computer
     } else if (humanScore > computerScore) {
-        // write to the console that the human is the winner
-        console.log("The human is the winner, congratulations!!!");
+        // update the page with the winner. 
+        winner.textContent = "Winner: The player is the winner, congratulations";
 
     // check if the computer score if bigger then the human. 
     } else if (computerScore > humanScore) {
-        // write to console that the computer is the winner. 
-        console.log("The computer is the winner.");
+        // update the page with the winner
+        winner.textContent = "Winner: The computer is the winner, better luck next time.";
 
     // else write to console that we have an error.
     } else {
-        console.log("Something is wrong...");
+        winner.textContent = "Something is wrong...";
+
     } 
+}
 
 
 // select the button with the id playerSelection
 let playerSelection = document.querySelector('#playerSelection');
 
-
 // listen for the event, when a button is clicked. 
 playerSelection.addEventListener('click', (event) => {
+    
     let target = event.target;
 
     // get the computer choice.
     let computerChoice = getComputerChoice();
 
+    // play one round
     playRound(target.id, computerChoice);
+
+    // update the score section with the current score. 
+
+    // select the element for updating the players score
+    let scorePlayer = document.querySelector("#scorePlayer");
+
+    // update the players score. 
+    scorePlayer.textContent = "Player: " + humanScore;
+
+    // select the element for updating the computers score. 
+    let scoreComputer = document.querySelector("#scoreComputer");
+
+    // update the computers score. 
+    scoreComputer.textContent = "Computer: " + computerScore;
+
+    if (humanScore == 5 || computerScore == 5) {
+        checkScore();
+    }
 }); 
+
+// select the element for resetting the game 
+let resetGame = document.querySelector("#reset");
+
+resetGame.addEventListener('click', (event) => {
+    // reset the score. 
+    resetScore();
+
+    // update the score on the page
+    scorePlayer.textContent = "Player: " + humanScore;
+    scoreComputer.textContent = "Computer: " + computerScore;
+
+    // reset the player and computer choice on the page
+    let playerDiv = document.querySelector("#player");
+    playerDiv.textContent = "Player: ";
+    let computerDiv = document.querySelector("#computer");
+    computerDiv.textContent = "Computer: ";
+
+    // reset the result on the page
+    let resultDiv = document.querySelector("#result");
+    resultDiv.textContent = "Result: ";
+
+    // reset the winner on the page
+    let winner = document.querySelector("#winner");
+    winner.textContent = "Winner: ";
+
+
+})
